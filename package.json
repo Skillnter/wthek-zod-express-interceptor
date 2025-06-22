@@ -1,6 +1,6 @@
 {
     "name": "@wthek/zod-express-interceptor",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Express middleware interceptor that transforms Zod validation errors into http-error-kit formatted errors.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
