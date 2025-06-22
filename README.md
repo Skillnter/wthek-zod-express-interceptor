@@ -10,7 +10,8 @@ _Built for Express projects using [`http-error-kit`][http-error-kit], this inter
 [![npm version](https://img.shields.io/npm/v/%40wthek%2Fzod-express-interceptor?color=brightgreen)](https://www.npmjs.com/package/@wthek/zod-express-interceptor)
 [![GitHub license](https://img.shields.io/github/license/skillnter/wthek-zod-express-interceptor?color=brightgreen)](LICENSE)
 [![GitHub Issues](https://img.shields.io/github/issues/Skillnter/wthek-zod-express-interceptor)](https://github.com/Skillnter/wthek-zod-express-interceptor/issues)
-
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/81ed9450fcc0416aa32973457a220193)](https://app.codacy.com/gh/Skillnter/wthek-zod-express-interceptor/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/81ed9450fcc0416aa32973457a220193)](https://app.codacy.com/gh/Skillnter/wthek-zod-express-interceptor/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 ![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/%40wthek/zod-express-interceptor?color=brightgreen)
 ![npm](https://img.shields.io/npm/dy/%40wthek%2Fzod-express-interceptor)
 ![npm bundle size (version)](https://img.shields.io/bundlephobia/minzip/%40wthek%2Fzod-express-interceptor/1.0.0-beta.1)
