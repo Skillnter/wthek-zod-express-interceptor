@@ -52,11 +52,11 @@ npm install @wthek/zod-express-interceptor
 
 **Add Middleware Just Before defining Routes**
 
-Use `KitZodExpressInterceptor` in your error pipeline **before** routes and global error-handling middleware like [`@wthek/express-middleware`][@wthek/express-middleware].
+Use `KitZodExpressInterceptor` **after your route definitions**, but **before** the final error-handling middleware like [`@wthek/express-middleware`][@wthek/express-middleware].
 
 This ensures Zod validation errors are transformed into `http-error-kit` errors early, allowing WTHek or any other middlewares to handle them cleanly.
 
-> _If the interceptor is placed after your routes, Zod errors will bypass it and reach the final error handler in raw form._
+> _If the interceptor is placed before your routes, it won't catch the Zod errors since those are thrown inside route execution — **after middleware execution phase**._
 
 ```Typescript
 import express from 'express';
@@ -68,8 +68,7 @@ const app = express();
 
 app.use(express.json());
 
-// Place interceptor BEFORE your routes
-app.use(KitZodExpressInterceptor());
+
 
 app.post('/user', (req, res) => {
     const schema = z.object({
@@ -81,7 +80,10 @@ app.post('/user', (req, res) => {
     res.send({ status: 'ok', parsed });
 });
 
-// Global error handler (after routes)
+// ✅ Place interceptor BEFORE your routes
+app.use(KitZodExpressInterceptor());
+
+// ✅ Global error handler (after routes)
 app.use(KitExpressMiddleware());
 
 app.listen(3000);

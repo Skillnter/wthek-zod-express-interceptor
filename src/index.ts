@@ -1,4 +1,9 @@
-import type { Request, Response, NextFunction } from "express";
+import type {
+    Request,
+    Response,
+    NextFunction,
+    ErrorRequestHandler,
+} from "express";
 import { KitZodTransformer } from "@wthek/zod-transformer";
 
 /**
@@ -15,7 +20,7 @@ import { KitZodTransformer } from "@wthek/zod-transformer";
  * const app = express();
  * app.use(KitZodExpressInterceptor());
  */
-export function KitZodExpressInterceptor() {
+export function KitZodExpressInterceptor(): ErrorRequestHandler {
     return (
         error: unknown,
         req: Request,
