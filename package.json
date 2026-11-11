@@ -1,13 +1,25 @@
 {
     "name": "@wthek/zod-express-interceptor",
-    "version": "1.0.1",
-    "description": "Express middleware interceptor that transforms Zod validation errors into http-error-kit formatted errors.",
+    "version": "1.1.0",
+    "description": "Express middleware interceptor that transforms Zod validation errors into structured http-error-kit formatted errors.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "sideEffects": false,
+    "engines": {
+        "node": ">=18"
+    },
     "scripts": {
         "test": "jest --config jest.config.ts",
         "build": "tsc --build",
-        "coverage": "jest --coverage --config jest.config.ts"
+        "coverage": "jest --coverage --config jest.config.ts",
+        "prepublishOnly": "npm run test && npm run build"
     },
     "repository": {
         "type": "git",
@@ -22,11 +34,15 @@
         "error-handling",
         "error-transformer",
         "zod-errors",
+        "zod-interceptor",
+        "validation-interceptor",
         "custom-errors",
+        "express-middleware",
         "http",
         "error",
         "kit",
         "http-errors",
+        "wthek",
         "skillnter"
     ],
     "author": "Himanshu Bansal <skillhimanshubansal@gmail.com>",
@@ -35,21 +51,23 @@
         "url": "https://github.com/Skillnter/wthek-zod-express-interceptor/issues"
     },
     "homepage": "https://github.com/Skillnter/wthek-zod-express-interceptor#readme",
-    "dependencies": {
-        "@types/express": "^5.0.3",
-        "@wthek/zod-transformer": "^1.0.0",
-        "express": "^5.1.0"
+    "peerDependencies": {
+        "express": "^4.0.0 || ^5.0.0",
+        "zod": "^3.22.2 || ^4.0.0"
     },
     "devDependencies": {
+        "@types/express": "^5.0.3",
         "@types/jest": "^29.5.14",
         "@types/node": "^22.13.4",
         "@typescript-eslint/eslint-plugin": "^8.22.0",
         "eslint-plugin-security": "^3.0.1",
+        "express": "^5.1.0",
         "jest": "^29.7.0",
         "ts-jest": "^29.2.5",
         "ts-node": "^10.9.2",
         "tslib": "^2.8.1",
-        "typescript": "^5.7.3"
+        "typescript": "^5.7.3",
+        "zod": "^3.22.2 || ^4.0.0"
     },
     "publishConfig": {
         "@skillnter:registry": "https://npm.pkg.github.com/"
@@ -80,5 +98,8 @@
             "type": "paypal",
             "url": "https://www.paypal.com/paypalme/skillnte"
         }
-    ]
+    ],
+    "dependencies": {
+        "@wthek/zod-transformer": "^1.1.0"
+    }
 }
