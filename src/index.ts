@@ -4,31 +4,48 @@ import type {
     NextFunction,
     ErrorRequestHandler,
 } from "express";
-import { KitZodTransformer } from "@wthek/zod-transformer";
+import {
+    fromZodError,
+    IKitZodTransformerOptions,
+} from "@wthek/zod-transformer";
+
+export type { IKitZodTransformerOptions };
 
 /**
- * Express.js middleware that intercepts all errors and attempts to transform any
- * Zod validation errors into structured `http-error-kit` errors using the
- * KitZodTransformer. If the error is not a ZodError, it is left unchanged.
+ * Express.js middleware that intercepts all errors and transforms any
+ * Zod validation errors into structured `http-error-kit` errors.
+ * If the error is not a ZodError, it is passed down the middleware chain unchanged.
  *
- * @returns {import("express").Handler}
+ * @param {IKitZodTransformerOptions} [options] Optional configuration for the transformed error.
+ * @returns {ErrorRequestHandler} An Express error-handling middleware function.
+ *
  * @example
- *
+ * ```typescript
  * import express from "express";
- * import { KitZodExpressInterceptor } from "@wthek/zod-transformer";
+ * import { KitZodExpressInterceptor } from "@wthek/zod-express-interceptor";
+ * import { KitExpressMiddleware } from "@wthek/express-middleware";
  *
  * const app = express();
+ *
+ * // Intercept Zod errors first, converting them to KitHttpErrors
  * app.use(KitZodExpressInterceptor());
+ *
+ * // Then format and send all KitHttpErrors
+ * app.use(KitExpressMiddleware());
+ * ```
  */
-export function KitZodExpressInterceptor(): ErrorRequestHandler {
+export function KitZodExpressInterceptor(
+    options?: IKitZodTransformerOptions
+): ErrorRequestHandler {
     return (
         error: unknown,
-        req: Request,
-        res: Response,
+        _req: Request,
+        _res: Response,
         next: NextFunction
     ) => {
         try {
-            next(KitZodTransformer(error));
+            const transformed = fromZodError(error, options);
+            next(transformed ?? error);
         } catch (err) {
             next(err);
         }
