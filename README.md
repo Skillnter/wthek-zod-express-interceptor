@@ -124,7 +124,7 @@ KitHttpErrorConfig.configureFormatter(
         code: statusCode,
         msg: message,
         extra: details,
-        traceId: args[0] || "0fcb44cb-4f09-4900-8c4f-73ddd37ffe0a",
+        traceId: args[0] || "0fcb44cb-4f09-4900-8c4f-73ddd37ffe0b",
     })
 );
 
@@ -146,7 +146,7 @@ KitHttpErrorConfig.configureFormatter(
             }
         ]
     },
-    "traceId": "0fcb44cb-4f09-4900-8c4f-73ddd37ffe0a"
+    "traceId": "0fcb44cb-4f09-4900-8c4f-73ddd37ffe0b"
 }
 
 ```
