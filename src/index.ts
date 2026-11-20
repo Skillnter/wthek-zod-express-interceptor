@@ -9,6 +9,17 @@ import {
     IKitZodTransformerOptions,
 } from "@wthek/zod-transformer";
 
+/**
+ * Configuration options re-exported from `@wthek/zod-transformer`.
+ *
+ * @example
+ * ```typescript
+ * const options: IKitZodTransformerOptions = {
+ *     message: "Validation failed",
+ *     statusCode: 422,
+ * };
+ * ```
+ */
 export type { IKitZodTransformerOptions };
 
 /**

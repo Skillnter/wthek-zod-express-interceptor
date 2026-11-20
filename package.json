@@ -1,6 +1,6 @@
 {
     "name": "@wthek/zod-express-interceptor",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Express middleware interceptor that transforms Zod validation errors into structured http-error-kit formatted errors.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -42,6 +42,15 @@
         "error",
         "kit",
         "http-errors",
+        "rfc-7807",
+        "rfc-9457",
+        "structured-errors",
+        "api-error-response",
+        "ai-agent",
+        "agent-skill",
+        "antigravity",
+        "cursor",
+        "copilot",
         "wthek",
         "skillnter"
     ],
@@ -75,6 +84,7 @@
     "files": [
         "dist/index.js",
         "dist/index.d.ts",
+        "llms.txt",
         "LICENSE"
     ],
     "funding": [
@@ -100,6 +110,6 @@
         }
     ],
     "dependencies": {
-        "@wthek/zod-transformer": "^1.1.0"
+        "@wthek/zod-transformer": "^1.2.0"
     }
 }

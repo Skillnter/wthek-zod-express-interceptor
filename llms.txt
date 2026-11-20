@@ -1,0 +1,59 @@
+# @wthek/zod-express-interceptor
+
+> Express middleware interceptor that transforms Zod validation errors into structured `http-error-kit` errors.
+
+## Overview
+`@wthek/zod-express-interceptor` acts as a bridge between Zod validation and Express error handling. It intercepts errors passed to `next(err)`, transforms any `ZodError` into a `KitHttpError` (retaining all validation issues), and forwards non-Zod errors untouched.
+
+## Installation
+```bash
+npm install @wthek/zod-express-interceptor @wthek/zod-transformer @wthek/express-middleware http-error-kit http-response-status-code
+```
+
+## Quick Start
+```typescript
+import express from "express";
+import { z } from "zod";
+import { KitZodExpressInterceptor } from "@wthek/zod-express-interceptor";
+import { KitExpressMiddleware } from "@wthek/express-middleware";
+
+const app = express();
+app.use(express.json());
+
+const CreateUserSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+});
+
+app.post("/users", (req, res, next) => {
+  try {
+    const data = CreateUserSchema.parse(req.body);
+    res.status(201).json(data);
+  } catch (error) {
+    next(error); // Interceptor will convert ZodError to KitHttpError
+  }
+});
+
+// 1. Intercept Zod errors and transform them to KitHttpErrors
+app.use(KitZodExpressInterceptor());
+
+// 2. Format and send all KitHttpErrors as structured JSON responses
+app.use(KitExpressMiddleware());
+
+app.listen(3000);
+```
+
+## API Reference
+
+### `KitZodExpressInterceptor(options?: IKitZodTransformerOptions): ErrorRequestHandler`
+Returns a 4-argument Express error-handling middleware: `(error, req, res, next) => void`.
+
+#### Options (`IKitZodTransformerOptions`)
+- `message` (`string`, default: `"Zod Validation Failed"`): Custom error message.
+- `statusCode` (`number`, default: `400`): Custom HTTP status code.
+
+## Safety Rules for AI Agents
+1. In the Express middleware registration chain, always place `KitZodExpressInterceptor` BEFORE `@wthek/express-middleware`.
+2. Forward validation errors via `next(error)` in synchronous catch blocks or async handlers.
+3. Non-Zod errors pass through unchanged, allowing them to reach standard downstream error handlers.
+

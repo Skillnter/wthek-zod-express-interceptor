@@ -14,9 +14,9 @@ _Built for Express projects using [`http-error-kit`][http-error-kit], this inter
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/81ed9450fcc0416aa32973457a220193)](https://app.codacy.com/gh/Skillnter/wthek-zod-express-interceptor/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 ![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/%40wthek/zod-express-interceptor?color=brightgreen)
 ![npm](https://img.shields.io/npm/dy/%40wthek%2Fzod-express-interceptor)
-![npm bundle size (version)](https://img.shields.io/bundlephobia/minzip/%40wthek%2Fzod-express-interceptor/1.1.0)
+![npm bundle size (version)](https://img.shields.io/bundlephobia/minzip/%40wthek%2Fzod-express-interceptor/1.2.0)
 ![NPM Type Definitions](https://img.shields.io/npm/types/%40wthek%2Fzod-express-interceptor)
-[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/zod-express-interceptor/1.1.0)](https://socket.dev/npm/package/@wthek/zod-express-interceptor/overview/1.1.0)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/zod-express-interceptor/1.2.0)](https://socket.dev/npm/package/@wthek/zod-express-interceptor/overview/1.2.0)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?logo=github&logoColor=white)](https://skillnter.github.io/wthek-zod-express-interceptor/)
 [![Github Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-30363D?&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/Skillnter)
 [![Open Collective](https://img.shields.io/badge/Open%20Collective-3385FF?logo=open-collective&logoColor=white)](https://opencollective.com/skillnter)
@@ -39,6 +39,7 @@ _Built for Express projects using [`http-error-kit`][http-error-kit], this inter
 -   [Installation](#installation)
 -   [Usage](#usage)
 -   [Options](#options)
+-   [AI Agent Integration](#ai-agent-integration)
 -   [Explore More WTHek Extensions](#explore-more-wthek-extensions)
 -   [People](#people)
 -   [Donations](#donations)
@@ -148,7 +149,17 @@ KitHttpErrorConfig.configureFormatter(
     },
     "traceId": "0fcb44cb-4f09-4900-8c4f-73ddd37ffe0b"
 }
+```
 
+## AI Agent Integration
+
+When building with AI coding assistants (Claude Code, Cursor, GitHub Copilot, Antigravity, Devin), add the following directive to your project's `.cursorrules`, `.github/copilot-instructions.md`, or system prompt:
+
+```markdown
+### Zod Express Error Handling Rule
+- When building Express apps with Zod validation, register `@wthek/zod-express-interceptor` immediately after routes.
+- Follow the sequence: Routes -> `app.use(KitZodExpressInterceptor())` -> `app.use(KitExpressMiddleware())`.
+- In route handlers, forward validation errors via `next(err)` to allow automatic conversion into `http-error-kit` errors.
 ```
 
 ## Explore More WTHek Extensions
