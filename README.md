@@ -16,7 +16,7 @@ _Built for Express projects using [`http-error-kit`][http-error-kit], this inter
 ![npm](https://img.shields.io/npm/dy/%40wthek%2Fzod-express-interceptor)
 ![npm bundle size (version)](https://img.shields.io/bundlephobia/minzip/%40wthek%2Fzod-express-interceptor/1.2.0)
 ![NPM Type Definitions](https://img.shields.io/npm/types/%40wthek%2Fzod-express-interceptor)
-[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/zod-express-interceptor/1.2.0)](https://socket.dev/npm/package/@wthek/zod-express-interceptor/overview/1.2.0)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/zod-express-interceptor/)](https://socket.dev/npm/package/@wthek/zod-express-interceptor/overview/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?logo=github&logoColor=white)](https://skillnter.github.io/wthek-zod-express-interceptor/)
 [![Github Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-30363D?&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/Skillnter)
 [![Open Collective](https://img.shields.io/badge/Open%20Collective-3385FF?logo=open-collective&logoColor=white)](https://opencollective.com/skillnter)
